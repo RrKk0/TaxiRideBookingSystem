@@ -1,4 +1,4 @@
-public final class Customer extends Person {
+public class Customer extends Person {
     private String email;
     private double rating;
 
