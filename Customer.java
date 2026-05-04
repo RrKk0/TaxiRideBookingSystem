@@ -1,4 +1,4 @@
-public class Customer extends Person {
+public final class Customer extends Person {
     private String email;
     private double rating;
 
@@ -29,7 +29,9 @@ public class Customer extends Person {
 
     @Override
     public void displayInfo() {
-        super.displayInfo();
+        System.out.println("Name: " + getName());
+        System.out.println("Phone: " + getPhone());
+        System.out.println("ID: " + getId());
         System.out.println("Email: " + email);
         System.out.println("Rating: " + rating);
     }
