@@ -1,4 +1,4 @@
-public class Driver extends Person {
+public final class Driver extends Person {
     private int experience;
     private int age;
 
@@ -33,7 +33,9 @@ public class Driver extends Person {
 
     @Override
     public void displayInfo() {
-        super.displayInfo();
+        System.out.println("Name: " + getName());
+        System.out.println("Phone: " + getPhone());
+        System.out.println("ID: " + getId());
         System.out.println("Experience: " + experience);
         System.out.println("Age: " + age);
     }
