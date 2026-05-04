@@ -1,4 +1,4 @@
-public class Person {
+public abstract class Person {
     private String name;
     private String phone;
     private int id;
@@ -36,9 +36,5 @@ public class Person {
         this.id = id;
     }
 
-    public void displayInfo() {
-        System.out.println("Name: " + name);
-        System.out.println("Phone: " + phone);
-        System.out.println("ID: " + id);
-    }
+    public abstract void displayInfo();
 }
