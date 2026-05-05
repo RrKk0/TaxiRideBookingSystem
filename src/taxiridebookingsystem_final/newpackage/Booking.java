@@ -9,6 +9,7 @@ package taxiridebookingsystem_final.newpackage;
  * @author PC
  */
 
+
 Public class Booking extends Bookable{
 private Customer customer;
 private Driver driver;
@@ -36,7 +37,7 @@ this.status = status;
 
 }
 
-public Customer getCustomer() { 
+public Customer getCustomer() {
     return customer; }
 
 public void setCustomer(Customer customer) {
@@ -46,7 +47,7 @@ public Driver getDriver() {
      return driver; }
 
 
-public void setDriver(Driver driver) { 
+public void setDriver(Driver driver) {
     this.driver = driver; }
 
 public Vehicle getVehicle() {
@@ -55,20 +56,20 @@ public Vehicle getVehicle() {
 public void setVehicle(Vehicle vehicle) {
      this.vehicle = vehicle; }
 
-public Payment getPayment() { 
+public Payment getPayment() {
     return payment; }
 
 public void setPayment(Payment payment) {
      this.payment = payment; }
 
-public String getPickupLocation() { 
+public String getPickupLocation() {
     return pickupLocation; }
 
 
 public void setPickupLocation(String pickupLocation) {
      this.pickupLocation = pickupLocation; }
 
-public String getDestination() 
+public String getDestination()
 { return destination; }
 
 public void setDestination(String destination) {
@@ -77,19 +78,19 @@ public void setDestination(String destination) {
 public double getFare() {
      return fare; }
 
-public void setFare(double fare) { 
+public void setFare(double fare) {
     this.fare = fare; }
 
-public int getBookingId() { 
+public int getBookingId() {
     return bookingId; }
 
-public void setBookingId(int bookingId) { 
+public void setBookingId(int bookingId) {
     this.bookingId = bookingId; }
 
 public String getStatus() {
      return status; }
 
-public void setStatus(String status) { 
+public void setStatus(String status) {
     this.status = status; }
 
 @Override
