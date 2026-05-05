@@ -9,7 +9,7 @@ package taxiridebookingsystem_final.newpackage;
  * @author PC
  */
 public class Payment {
-private String paymentMethod;
+   private String paymentMethod;
 private double amount;
 private int paymentId;
 private String paymentStatus;
