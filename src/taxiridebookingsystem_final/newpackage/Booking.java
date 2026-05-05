@@ -10,6 +10,7 @@ private String destination;
 private double fare;
 private int bookingId;
 private String status;
+private Vehicle vehicle;
 
 public Booking(){}
 
@@ -18,7 +19,7 @@ String pickupLocation, String destination, double fare, int bookingId,String sta
 
 this.customer = customer;
 this.driver = driver;
-this.Vehicle = vehicle;
+this.vehicle = vehicle;
 this.payment = payment;
 this.pickupLocation = pickupLocation;
 this.destination = destination;
@@ -42,10 +43,10 @@ public void setDriver(Driver driver) {
     this.driver = driver; }
 
 public Vehicle getVehicle() {
-     return Vehicle; }
+     return vehicle; }
 
 public void setVehicle(Vehicle vehicle) {
-     this.Vehicle = vehicle; }
+     this.vehicle = vehicle; }
 
 public Payment getPayment() {
     return payment; }
@@ -98,11 +99,11 @@ public void cancel(){
 }
 
 public String getCustomerName(){
-    return customer.name;
+    return customer.getName();
 }
 
 public String getVehicleModel(){
-    return Vehicle.model;
+    return vehicle.getModel();
 }
 
 public String getpaymentMethod(){
