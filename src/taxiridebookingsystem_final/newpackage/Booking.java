@@ -1,16 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package taxiridebookingsystem_final.newpackage;
 
-/**
- *
- * @author PC
- */
-
-
-Public class Booking extends Bookable{
+public class Booking implements Bookable{
 private Customer customer;
 private Driver driver;
 private Payment payment;
@@ -27,7 +18,7 @@ String pickupLocation, String destination, double fare, int bookingId,String sta
 
 this.customer = customer;
 this.driver = driver;
-this.vehicle = vehicle;
+this.Vehicle = vehicle;
 this.payment = payment;
 this.pickupLocation = pickupLocation;
 this.destination = destination;
@@ -51,10 +42,10 @@ public void setDriver(Driver driver) {
     this.driver = driver; }
 
 public Vehicle getVehicle() {
-     return vehicle; }
+     return Vehicle; }
 
 public void setVehicle(Vehicle vehicle) {
-     this.vehicle = vehicle; }
+     this.Vehicle = vehicle; }
 
 public Payment getPayment() {
     return payment; }
@@ -111,7 +102,7 @@ public String getCustomerName(){
 }
 
 public String getVehicleModel(){
-    return vehicle.model;
+    return Vehicle.model;
 }
 
 public String getpaymentMethod(){
