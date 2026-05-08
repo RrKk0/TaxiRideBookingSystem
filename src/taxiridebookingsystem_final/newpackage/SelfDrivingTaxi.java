@@ -11,6 +11,11 @@ public class SelfDrivingTaxi extends Vehicle {
         this.sensorStatus = sensorStatus;
     }
 
+    public SelfDrivingTaxi() {
+        this("","",0,"","");
+    }
+
+
     public String getSoftwareVersion() {
         return softwareVersion;
     }
