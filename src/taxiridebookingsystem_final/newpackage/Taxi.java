@@ -1,6 +1,6 @@
 package taxiridebookingsystem_final.newpackage;
 
-public class Taxi extends Vehicle {
+public class Taxi extends Vehicle implements Bookable{
 
     private String color;
     private int year;
@@ -15,6 +15,11 @@ public class Taxi extends Vehicle {
         setColor(color);
         setYear(year);
     }
+
+    public Taxi() {
+        this("","",0,"",0);
+    }
+    
     
     public String getColor() {
         return color;
@@ -60,4 +65,15 @@ public class Taxi extends Vehicle {
         }
         return 0;
     }
+    @Override
+public void book(){
+
+System.out.println("Taxi booked");
+
+}
+
+@Override
+public void cancel(){
+
+    System.out.println("Taxi booking cancelled.Fee" + FEE);}
 }
