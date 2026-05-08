@@ -10,9 +10,9 @@ public abstract class Person {
     }
 
     public Person(String name, String phone, int id) {
-        this.name = name;
-        this.phone = phone;
-        this.id = id;
+        setName(name);
+        setPhone(phone);
+        setId(id);
     }
 
     public String getName() {
@@ -20,7 +20,12 @@ public abstract class Person {
     }
 
     public void setName(String name) {
-        this.name = name;
+
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("Invalid name!");
+        } else {
+            this.name = name;
+        }
     }
 
     public String getPhone() {
@@ -28,7 +33,12 @@ public abstract class Person {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+
+        if (phone == null || phone.length() < 10) {
+            System.out.println("Invalid phone number!");
+        } else {
+            this.phone = phone;
+        }
     }
 
     public int getId() {
@@ -36,7 +46,12 @@ public abstract class Person {
     }
 
     public void setId(int id) {
-        this.id = id;
+
+        if (id <= 0) {
+            System.out.println("Invalid ID!");
+        } else {
+            this.id = id;
+        }
     }
 
     public abstract void displayInfo();
