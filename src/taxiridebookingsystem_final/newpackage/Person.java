@@ -14,6 +14,9 @@ public abstract class Person {
         setPhone(phone);
         setId(id);
     }
+    public final void printSystemName(){
+        System.out.println("Taxi Ride Booking System");
+    }
 
     public String getName() {
         return name;
