@@ -1,6 +1,6 @@
 package taxiridebookingsystem_final.newpackage;
 
-public final class Driver extends Person {
+public class Driver extends Person {
 
     private int experience;
     private int age;
@@ -9,9 +9,10 @@ public final class Driver extends Person {
     }
 
     public Driver(String name, String phone, int id, int experience, int age) {
+
         super(name, phone, id);
-        this.experience = experience;
-        this.age = age;
+        setExperience(experience);
+        setAge(age);
     }
 
     public int getExperience() {
@@ -19,7 +20,12 @@ public final class Driver extends Person {
     }
 
     public void setExperience(int experience) {
-        this.experience = experience;
+
+        if (experience < 0) {
+            System.out.println("Invalid experience!");
+        } else {
+            this.experience = experience;
+        }
     }
 
     public int getAge() {
@@ -27,7 +33,12 @@ public final class Driver extends Person {
     }
 
     public void setAge(int age) {
-        this.age = age;
+
+        if (age < 18) {
+            System.out.println("Driver age must be 18 or more!");
+        } else {
+            this.age = age;
+        }
     }
 
     public void drive() {
@@ -36,6 +47,7 @@ public final class Driver extends Person {
 
     @Override
     public void displayInfo() {
+
         System.out.println("Name: " + getName());
         System.out.println("Phone: " + getPhone());
         System.out.println("ID: " + getId());
