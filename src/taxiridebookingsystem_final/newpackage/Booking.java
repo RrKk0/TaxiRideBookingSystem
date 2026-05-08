@@ -164,4 +164,9 @@ public class Booking implements Bookable {
         }
     }
 
+    public static int getBookingCount() {
+        return bookingCount;
+    }
+    
+
 }
