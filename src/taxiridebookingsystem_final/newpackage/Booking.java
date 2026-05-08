@@ -1,113 +1,167 @@
-
 package taxiridebookingsystem_final.newpackage;
 
-public class Booking implements Bookable{
-private Customer customer;
-private Driver driver;
-private Payment payment;
-private String pickupLocation;
-private String destination;
-private double fare;
-private int bookingId;
-private String status;
-private Vehicle vehicle;
+public class Booking implements Bookable {
 
-public Booking(){}
+    private Customer customer;
+    private Driver driver;
+    private Payment payment;
+    private String pickupLocation;
+    private String destination;
+    private double fare;
+    private int bookingId;
+    private String status;
+    private Vehicle vehicle;
+    private static int bookingCount = 0;
 
-public Booking(Customer customer, Driver driver, Vehicle vehicle, Payment payment,
-String pickupLocation, String destination, double fare, int bookingId,String status){
+    public Booking() {
+    }
 
-this.customer = customer;
-this.driver = driver;
-this.vehicle = vehicle;
-this.payment = payment;
-this.pickupLocation = pickupLocation;
-this.destination = destination;
-this.fare = fare;
-this.bookingId = bookingId;
-this.status = status;
+    public Booking(Customer customer, Driver driver, Vehicle vehicle, Payment payment,
+            String pickupLocation, String destination, double fare, int bookingId, String status) {
 
-}
+        setCustomer(customer);
+        setDriver(driver);
+        setVehicle(vehicle);
+        setPayment(payment);
+        setPickupLocation(pickupLocation);
+        setDestination(destination);
+        setFare(fare);
+        setBookingId(bookingId);
+        setStatus(status);
+        bookingCount++;
 
-public Customer getCustomer() {
-    return customer; }
+    }
 
-public void setCustomer(Customer customer) {
-     this.customer = customer; }
+    public Customer getCustomer() {
+        return customer;
+    }
 
-public Driver getDriver() {
-     return driver; }
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
+    public Driver getDriver() {
+        return driver;
+    }
 
-public void setDriver(Driver driver) {
-    this.driver = driver; }
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
 
-public Vehicle getVehicle() {
-     return vehicle; }
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
 
-public void setVehicle(Vehicle vehicle) {
-     this.vehicle = vehicle; }
+    public void setVehicle(Vehicle vehicle) {
+        if (vehicle != null) {
+            this.vehicle = vehicle;
+        } else {
+            System.out.println("Invalid vehicle! Vehicle cannot be null.");
+        }
+    }
 
-public Payment getPayment() {
-    return payment; }
+    public Payment getPayment() {
+        return payment;
+    }
 
-public void setPayment(Payment payment) {
-     this.payment = payment; }
+    public void setcustomer(Customer customer) {
+        if (customer != null) {
+            this.customer = customer;
+        } else {
+            System.out.println("Invalid customer! Customer cannot be null.");
+        }
+    }
 
-public String getPickupLocation() {
-    return pickupLocation; }
+    public String getPickupLocation() {
+        return pickupLocation;
+    }
 
+    public String getDestination() {
+        return destination;
+    }
 
-public void setPickupLocation(String pickupLocation) {
-     this.pickupLocation = pickupLocation; }
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 
-public String getDestination()
-{ return destination; }
+    public double getFare() {
+        return fare;
+    }
 
-public void setDestination(String destination) {
-     this.destination = destination; }
+    public int getBookingId() {
+        return bookingId;
+    }
 
-public double getFare() {
-     return fare; }
+    public String getStatus() {
+        return status;
+    }
 
-public void setFare(double fare) {
-    this.fare = fare; }
+    @Override
+    public void book() {
+        status = "Booked";
+        System.out.println("Booking confirmed");
 
-public int getBookingId() {
-    return bookingId; }
+    }
 
-public void setBookingId(int bookingId) {
-    this.bookingId = bookingId; }
+    @Override
+    public void cancel() {
+        status = "cancelled";
+        System.out.println("Booking cancelled.FEE" + FEE);
+    }
 
-public String getStatus() {
-     return status; }
+    public String getCustomerName() {
+        return customer.getName();
+    }
 
-public void setStatus(String status) {
-    this.status = status; }
+    public String getVehicleModel() {
+        return vehicle.getModel();
+    }
 
-@Override
-public void book(){
-status="Booked";
-System.out.println("Booking confirmed");
+    public String getpaymentMethod() {
+        return payment.toString();
+    }
 
-}
+    public void setPayment(Payment payment) {
+        if (payment != null) {
+            this.payment = payment;
+        } else {
+            System.out.println("Invalid payment! Payment cannot be null.");
+        }
+    }
 
-@Override
-public void cancel(){
-    status="cancelled";
-    System.out.println("Booking cancelled.FEE" +FEE);
-}
+    public void setPickupLocation(String pickupLocation) {
+        if (pickupLocation.isEmpty()) {
+            System.out.println("Invalid pickup location! It cannot be empty.");
+        } else if (pickupLocation.equals(destination)) {
+            System.out.println("Invalid pickup location! It cannot be the same as the destination.");
+        } else {
+            this.pickupLocation = pickupLocation;
+        }
+    }
 
-public String getCustomerName(){
-    return customer.getName();
-}
+    public void setFare(double fare) {
+        if (fare >= 0) {
+            this.fare = fare;
+        } else {
+            System.out.println("Invalid fare! Fare cannot be negative.");
+        }
+    }
 
-public String getVehicleModel(){
-    return vehicle.getModel();
-}
+    public void setBookingId(int bookingId) {
+        if (bookingId > 0) {
+            this.bookingId = bookingId;
+        } else {
+            System.out.println("Invalid booking ID! ID must be a positive number.");
+        }
+    }
 
-public String getpaymentMethod(){
-    return payment.toString();
-}
+    public void setStatus(String status) {
+        if (status.equals("Pending") || status.equals("Confirmed")
+                || status.equals("Cancelled") || status.equals("Completed")) {
+            this.status = status;
+        } else {
+            System.out.println("Invalid status! Please enter: Pending, Confirmed, Cancelled, or Completed.");
+        }
+    }
 
 }
