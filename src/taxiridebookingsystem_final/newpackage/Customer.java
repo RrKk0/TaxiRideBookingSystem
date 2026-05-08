@@ -9,9 +9,10 @@ public final class Customer extends Person {
     }
 
     public Customer(String name, String phone, int id, String email, double rating) {
+
         super(name, phone, id);
-        this.email = email;
-        this.rating = rating;
+        setEmail(email);
+        setRating(rating);
     }
 
     public String getEmail() {
@@ -19,7 +20,12 @@ public final class Customer extends Person {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+
+        if (email == null || !email.contains("@")) {
+            System.out.println("Invalid email!");
+        } else {
+            this.email = email;
+        }
     }
 
     public double getRating() {
@@ -27,11 +33,17 @@ public final class Customer extends Person {
     }
 
     public void setRating(double rating) {
-        this.rating = rating;
+
+        if (rating < 0 || rating > 5) {
+            System.out.println("Rating must be between 0 and 5!");
+        } else {
+            this.rating = rating;
+        }
     }
 
     @Override
     public void displayInfo() {
+
         System.out.println("Name: " + getName());
         System.out.println("Phone: " + getPhone());
         System.out.println("ID: " + getId());
