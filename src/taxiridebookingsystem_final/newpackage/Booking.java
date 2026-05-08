@@ -95,7 +95,7 @@ System.out.println("Booking confirmed");
 @Override
 public void cancel(){
     status="cancelled";
-    System.out.println("Booking cancelled");
+    System.out.println("Booking cancelled.FEE" +FEE);
 }
 
 public String getCustomerName(){
