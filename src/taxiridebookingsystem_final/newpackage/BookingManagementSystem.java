@@ -4,16 +4,16 @@ package taxiridebookingsystem_final.newpackage;
 public class BookingManagementSystem {
     private Booking[] bookings;
     private Vehicle[] vehicles;
-    private int totalSystemBooking;
+   
     public BookingManagementSystem() {
         bookings = new Booking[100];
         vehicles = new Vehicle[100];
-        totalSystemBooking = 0;
+      
     }
     public BookingManagementSystem(Booking[] bookings, Vehicle[] vehicles, int totalSystemBooking) {
         this.bookings = bookings;
         this.vehicles = vehicles;
-        this.totalSystemBooking = totalSystemBooking;
+      
     }
     public void addBooking(Booking booking) {
 
@@ -21,7 +21,7 @@ public class BookingManagementSystem {
 
             if (bookings[i] == null) {
                 bookings[i] = booking;
-                totalSystemBooking++;
+               
                 break;
             }
         }
@@ -32,7 +32,7 @@ public class BookingManagementSystem {
 
             if (bookings[i] == booking) {
                 bookings[i] = null;
-                totalSystemBooking--;
+                
                 break;
             }
         }
@@ -79,14 +79,12 @@ public class BookingManagementSystem {
     public Vehicle[] getVehicles() {
         return vehicles;
     }
-    public int getTotalSystemBookings() {
-        return totalSystemBooking;
-    }
 
     @Override
     public String toString() {
-        return "BookingManagementSystem{" +
-                "totalSystemBooking=" + totalSystemBooking +
-                '}';
+        return "BookingManagementSystem{" + "bookings=" + bookings + ", vehicles=" + vehicles + '}';
     }
+    
+
+   
 }
