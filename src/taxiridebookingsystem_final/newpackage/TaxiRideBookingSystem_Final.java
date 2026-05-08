@@ -19,7 +19,7 @@ public class TaxiRideBookingSystem_Final {
         ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 
         // Subclass objects are stored using the superclass type to show polymorphism.
-        people.add(new Customer("Sara", "0500000000", 1, "sara@example.com", 5));
+        people.add(new Customer("Sara", "0500000000", 1, "sara@gmail.com", 5));
         people.add(new Driver("Ahmed", "0550000000", 2, 4, 30));
         vehicles.add(new Taxi("Toyota Camry", "TX-100", 4, "White", 2023));
         vehicles.add(new SelfDrivingTaxi("Tesla Model Y", "SD-200", 4, "1.0", "Active"));
@@ -54,6 +54,7 @@ public class TaxiRideBookingSystem_Final {
                             for (Person person : people) {
                                 // getClass is a final method inherited from Object.
                                 System.out.println("Type: " + person.getClass().getSimpleName());
+                                person.printSystemName();
 
                                 // displayInfo is abstract in Person and is implemented by subclasses.
                                 person.displayInfo();
