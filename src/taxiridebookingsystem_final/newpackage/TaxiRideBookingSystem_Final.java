@@ -244,7 +244,7 @@ public class TaxiRideBookingSystem_Final {
                         break;
 
                     case 9:
-                        System.out.println("GUI option selected. No GUI class is available in this package.");
+                       GUI.main(args);
                         break;
 
                     case 10:
