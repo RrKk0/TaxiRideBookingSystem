@@ -1,6 +1,6 @@
 package taxiridebookingsystem_final.newpackage;
 
-public class Driver extends Person {
+public final class  Driver extends Person {
 
     private int experience;
     private int age;
