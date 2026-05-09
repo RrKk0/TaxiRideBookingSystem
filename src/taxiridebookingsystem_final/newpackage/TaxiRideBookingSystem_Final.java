@@ -41,8 +41,10 @@ public class TaxiRideBookingSystem_Final {
                 System.out.println("6. Remove a vehicle");
                 System.out.println("7. Read from a text file");
                 System.out.println("8. Write to a text file");
-                System.out.println("9. Open/launch the GUI");
-                System.out.println("10. Exit");
+                System.out.println("9. Pay for booking");
+                System.out.println("10. Rate driver");
+                System.out.println("11. Open/launch the GUI");
+                System.out.println("12. Exit");
                 System.out.print("Enter your choice: ");
                 choice = Integer.parseInt(input.nextLine());
 
@@ -69,6 +71,7 @@ public class TaxiRideBookingSystem_Final {
                                 System.out.println("---------------------------------------------");
                             }
                         }
+                        pause(input);
                         break;
 
                     case 2:
@@ -78,87 +81,83 @@ public class TaxiRideBookingSystem_Final {
                                 System.out.println("---------------------------------------------");
                             }
                         }
+                        pause(input);
                         break;
 
                     case 3:
                         if (vehicles.isEmpty()) {
                             System.out.println("Add a vehicle before creating a booking.");
+                            pause(input);
                             break;
                         }
 
                         System.out.print("Customer name: ");
                         String customerName = input.nextLine();
+                        if (customerName.trim().isEmpty()) {
+                            System.out.println("Invalid input, please try again.");
+                            pause(input);
+                            break;
+                        }
+
                         System.out.print("Customer phone: ");
                         String customerPhone = input.nextLine();
-                        System.out.print("Customer ID: ");
-                        int customerId = Integer.parseInt(input.nextLine());
-                        if (customerId <= 0) {
-                            System.out.println("ID must be greater than 0.");
+                        if (customerPhone.length() < 10) {
+                            System.out.println("Invalid input, please try again.");
+                            pause(input);
                             break;
                         }
 
                         System.out.print("Customer email: ");
                         String email = input.nextLine();
-                        System.out.print("Customer rating (0 to 5): ");
-                        double rating = Double.parseDouble(input.nextLine());
-
-                        System.out.print("Driver name: ");
-                        String driverName = input.nextLine();
-                        System.out.print("Driver phone: ");
-                        String driverPhone = input.nextLine();
-                        System.out.print("Driver ID: ");
-                        int driverId = Integer.parseInt(input.nextLine());
-                        if (driverId <= 0) {
-                            System.out.println("ID must be greater than 0.");
+                        if (!email.contains("@")) {
+                            System.out.println("Invalid input, please try again.");
+                            pause(input);
                             break;
                         }
-
-                        System.out.print("Driver experience: ");
-                        int experience = Integer.parseInt(input.nextLine());
-                        System.out.print("Driver age: ");
-                        int age = Integer.parseInt(input.nextLine());
 
                         System.out.print("Pickup location: ");
                         String pickup = input.nextLine();
+                        if (pickup.trim().isEmpty()) {
+                            System.out.println("Invalid input, please try again.");
+                            pause(input);
+                            break;
+                        }
+
                         System.out.print("Destination: ");
                         String destination = input.nextLine();
+                        if (destination.trim().isEmpty()) {
+                            System.out.println("Invalid input, please try again.");
+                            pause(input);
+                            break;
+                        }
+
                         System.out.print("Distance: ");
                         double distance = Double.parseDouble(input.nextLine());
                         if (distance <= 0) {
-                            System.out.println("Distance must be greater than 0.");
-                            break;
-                        }
-                        System.out.println("Calculated fare for the first vehicle: " + vehicles.get(0).calculateFare(distance));
-                        System.out.print("Fare: ");
-                        double fare = Double.parseDouble(input.nextLine());
-                        if (fare <= 0) {
-                            System.out.println("Fare must be greater than 0.");
+                            System.out.println("Invalid input, please try again.");
+                            pause(input);
                             break;
                         }
 
-                        System.out.print("Booking ID: ");
-                        int bookingId = Integer.parseInt(input.nextLine());
-                        if (bookingId <= 0) {
-                            System.out.println("Booking ID must be greater than 0.");
-                            break;
-                        }
-
-                        System.out.print("Payment ID: ");
-                        int paymentId = Integer.parseInt(input.nextLine());
-                        if (paymentId <= 0) {
-                            System.out.println("Payment ID must be greater than 0.");
-                            break;
-                        }
+                        int customerId = (int) (Math.random() * 9000) + 1000;
+                        int bookingId = (int) (Math.random() * 9000) + 1000;
+                        int paymentId = (int) (Math.random() * 9000) + 1000;
+                        double rating = 5;
+                        double fare = vehicles.get(0).calculateFare(distance);
 
                         Customer customer = new Customer(customerName, customerPhone, customerId, email, rating);
-                        Driver driver = new Driver(driverName, driverPhone, driverId, experience, age);
+                        Driver driver = new Driver("Ahmed", "0550000000", 2, 4, 30);
                         people.add(customer);
                         people.add(driver);
                         Payment payment = new Payment("Cash", fare, paymentId, "Pending");
                         Booking booking = new Booking(customer, driver, vehicles.get(0), payment, pickup, destination, fare, bookingId, "Pending");
                         booking.book();
+                        customer.addBooking(booking);
                         system.addBooking(booking);
-                        System.out.println("Booking added.");
+                        System.out.println("Booking created successfully");
+                        System.out.println("Booking ID: " + bookingId);
+                        System.out.println("Expected fare: " + fare);
+                        pause(input);
                         break;
 
                     case 4:
@@ -166,12 +165,13 @@ public class TaxiRideBookingSystem_Final {
                         int cancelId = Integer.parseInt(input.nextLine());
                         if (cancelId <= 0) {
                             System.out.println("Booking ID must be greater than 0.");
+                            pause(input);
                             break;
                         }
 
                         boolean bookingFound = false;
                         for (Booking currentBooking : system.getBookings()) {
-                            if (currentBooking != null && currentBooking.getBookingId() == cancelId) {
+                            if (currentBooking.getBookingId() == cancelId) {
                                 currentBooking.cancel();
                                 system.removeBooking(currentBooking);
                                 bookingFound = true;
@@ -182,6 +182,7 @@ public class TaxiRideBookingSystem_Final {
                         if (!bookingFound) {
                             System.out.println("Booking not found.");
                         }
+                        pause(input);
                         break;
 
                     case 5:
@@ -198,6 +199,7 @@ public class TaxiRideBookingSystem_Final {
                         int capacity = Integer.parseInt(input.nextLine());
                         if (capacity <= 0) {
                             System.out.println("Capacity must be greater than 0.");
+                            pause(input);
                             break;
                         }
 
@@ -222,6 +224,7 @@ public class TaxiRideBookingSystem_Final {
                         } else {
                             System.out.println("Invalid vehicle type.");
                         }
+                        pause(input);
                         break;
 
                     case 6:
@@ -234,34 +237,85 @@ public class TaxiRideBookingSystem_Final {
                             system.removeVehicle(removedVehicle);
                             System.out.println("Vehicle removed.");
                         }
+                        pause(input);
                         break;
 
                     case 7:
                         readText();
+                        pause(input);
                         break;
 
                     case 8:
                         writeText();
+                        pause(input);
                         break;
 
                     case 9:
-                       GUI.main(args);
+                        System.out.print("Enter booking ID to pay: ");
+                        int payBookingId = Integer.parseInt(input.nextLine());
+
+                        boolean paymentFound = false;
+                        for (Booking currentBooking : system.getBookings()) {
+                            if (currentBooking.getBookingId() == payBookingId) {
+                                double bookingFare = currentBooking.getFare();
+                                double tax = bookingFare * 0.15;
+                                double total = bookingFare + tax;
+                                System.out.println("Fare: " + bookingFare);
+                                System.out.println("Tax: " + tax);
+                                System.out.println("Total: " + total);
+                                currentBooking.getPayment().processPayment();
+                                System.out.println("Payment completed.");
+                                paymentFound = true;
+                                break;
+                            }
+                        }
+
+                        if (!paymentFound) {
+                            System.out.println("Booking not found.");
+                        }
+                        pause(input);
                         break;
 
                     case 10:
+                        System.out.print("Enter driver rating (0 to 5): ");
+                        double driverRating = Double.parseDouble(input.nextLine());
+                        if (driverRating < 0 || driverRating > 5) {
+                            System.out.println("Rating must be between 0 and 5.");
+                        } else {
+                            System.out.println("Driver rating was submitted.");
+                        }
+                        pause(input);
+                        break;
+
+                    case 11:
+                       GUI.main(args);
+                        pause(input);
+                        break;
+
+                    case 12:
                         System.out.println("Goodbye.");
+                        pause(input);
                         break;
 
                     default:
                         System.out.println("Invalid choice.");
+                        pause(input);
                 }
+            } catch (NumberFormatException ex) {
+                System.err.println("Invalid input, please try again.");
+                pause(input);
             } catch (Exception ex) {
-                System.err.println("Invalid input. Please try again.");
-                System.err.println(ex);
+                System.err.println("Invalid input, please try again.");
+                pause(input);
             }
-        } while (choice != 10);
+        } while (choice != 12);
 
         input.close();
+    }
+
+    public static void pause(Scanner input) {
+        System.out.println("Press Enter to return to the menu...");
+        input.nextLine();
     }
 
     /**
@@ -273,11 +327,9 @@ public class TaxiRideBookingSystem_Final {
             boolean hasBookings = false;
 
             for (Booking ele : system.getBookings()) {
-                if (ele != null) {
-                    output.format(ele.toString() + "\n");
-                    output.format("\n---------------------------------------------\n");
-                    hasBookings = true;
-                }
+                output.format(ele.toString() + "\n");
+                output.format("\n---------------------------------------------\n");
+                hasBookings = true;
             }
 
             if (hasBookings) {
