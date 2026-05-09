@@ -1,82 +1,57 @@
-
 package taxiridebookingsystem_final.newpackage;
 
+import java.util.ArrayList;
+
 public class BookingManagementSystem {
-    private Booking[] bookings;
-    private Vehicle[] vehicles;
-   
+
+    private ArrayList<Booking> bookings;
+    private ArrayList<Vehicle> vehicles;
+
     public BookingManagementSystem() {
-        bookings = new Booking[100];
-        vehicles = new Vehicle[100];
-      
+
+        bookings = new ArrayList<>();
+        vehicles = new ArrayList<>();
     }
-    public BookingManagementSystem(Booking[] bookings, Vehicle[] vehicles, int totalSystemBooking) {
+
+    public BookingManagementSystem(ArrayList<Booking> bookings, ArrayList<Vehicle> vehicles) {
+
         this.bookings = bookings;
         this.vehicles = vehicles;
-      
     }
+
     public void addBooking(Booking booking) {
-
-        for (int i = 0; i < bookings.length; i++) {
-
-            if (bookings[i] == null) {
-                bookings[i] = booking;
-               
-                break;
-            }
-        }
+        bookings.add(booking);
     }
+
     public void removeBooking(Booking booking) {
-
-        for (int i = 0; i < bookings.length; i++) {
-
-            if (bookings[i] == booking) {
-                bookings[i] = null;
-                
-                break;
-            }
-        }
+        bookings.remove(booking);
     }
+
     public void displayAllBookings() {
 
-        boolean isEmpty = true;
-
-        for (Booking booking : bookings) {
-
-            if (booking != null) {
-                System.out.println(booking);
-                isEmpty = false;
-            }
-        }
-
-        if (isEmpty) {
+        if (bookings.isEmpty()) {
             System.out.println("No bookings available.");
+        } else {
+
+            for (Booking booking : bookings) {
+                System.out.println(booking);
+            }
         }
     }
+
     public void addVehicle(Vehicle vehicle) {
-
-        for (int i = 0; i < vehicles.length; i++) {
-
-            if (vehicles[i] == null) {
-                vehicles[i] = vehicle;
-                break;
-            }
-        }
+        vehicles.add(vehicle);
     }
+
     public void removeVehicle(Vehicle vehicle) {
-
-        for (int i = 0; i < vehicles.length; i++) {
-
-            if (vehicles[i] == vehicle) {
-                vehicles[i] = null;
-                break;
-            }
-        }
+        vehicles.remove(vehicle);
     }
-    public Booking[] getBookings() {
+
+    public ArrayList<Booking> getBookings() {
         return bookings;
     }
-    public Vehicle[] getVehicles() {
+
+    public ArrayList<Vehicle> getVehicles() {
         return vehicles;
     }
 
@@ -84,7 +59,4 @@ public class BookingManagementSystem {
     public String toString() {
         return "BookingManagementSystem{" + "bookings=" + bookings + ", vehicles=" + vehicles + '}';
     }
-    
-
-   
 }
