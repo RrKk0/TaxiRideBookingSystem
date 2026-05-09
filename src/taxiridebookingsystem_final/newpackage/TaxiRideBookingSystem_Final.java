@@ -54,11 +54,11 @@ public class TaxiRideBookingSystem_Final {
                             System.out.println("No people available.");
                         } else {
                             for (Person person : people) {
-                                // getClass is a final method inherited from Object.
+                                
                                 System.out.println("Type: " + person.getClass().getSimpleName());
                                 person.printSystemName();
 
-                                // displayInfo is abstract in Person and is implemented by subclasses.
+                                
                                 person.displayInfo();
 
                                 if (person instanceof Driver) {
@@ -318,9 +318,9 @@ public class TaxiRideBookingSystem_Final {
         input.nextLine();
     }
 
-    /**
-     * Saves all bookings to the text file.
-     */
+    
+     //Saves all bookings to the text file.
+     
     public static void writeText() {
         try {
             Formatter output = new Formatter("booking.txt");
@@ -347,9 +347,8 @@ public class TaxiRideBookingSystem_Final {
         }
     }
 
-    /**
-     * Reads the text file line by line and prints each line.
-     */
+    // Reads the text file line by line and prints each line.
+ 
     public static void readText() {
         try {
             Scanner fileIn = new Scanner(new File("booking.txt"));
