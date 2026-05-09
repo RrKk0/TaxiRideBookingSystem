@@ -134,9 +134,9 @@ public class TaxiRideBookingSystem_Final {
                         System.out.print("Distance: ");
                         double distance = Double.parseDouble(input.nextLine());
                         if (distance <= 0) {
-                            System.out.println("Invalid input, please try again.");
-                            pause(input);
-                            break;
+                            throw new InvalidBookingException("Distance must be greater than 0.");
+                            
+    
                         }
 
                         int customerId = (int) (Math.random() * 9000) + 1000;
@@ -301,10 +301,17 @@ public class TaxiRideBookingSystem_Final {
                         System.out.println("Invalid choice.");
                         pause(input);
                 }
+                
             } catch (NumberFormatException ex) {
                 System.err.println("Invalid input, please try again.");
                 pause(input);
-            } catch (Exception ex) {
+            }
+            catch (InvalidBookingException ex) {
+             System.err.println(ex.getMessage());
+             pause(input);
+}
+            
+            catch (Exception ex) {
                 System.err.println("Invalid input, please try again.");
                 pause(input);
             }
@@ -321,7 +328,7 @@ public class TaxiRideBookingSystem_Final {
     
      //Saves all bookings to the text file.
      
-    public static void writeText() {
+    public static void writeText()throws FileNotFoundException {
         try {
             Formatter output = new Formatter("booking.txt");
             boolean hasBookings = false;
@@ -349,7 +356,7 @@ public class TaxiRideBookingSystem_Final {
 
     // Reads the text file line by line and prints each line.
  
-    public static void readText() {
+    public static void readText() throws FileNotFoundException {
         try {
             Scanner fileIn = new Scanner(new File("booking.txt"));
             while (fileIn.hasNextLine()) {
