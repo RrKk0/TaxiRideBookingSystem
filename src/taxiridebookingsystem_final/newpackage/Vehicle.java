@@ -5,15 +5,16 @@ public class Vehicle {
     private String model;
     private String licensePlate;
     private int capacity;
+    // Fixed rate per kilometer for fare calculation
     protected final static double RatePerKm=3.5;
     
     
-    
+    //empty constructor
     public Vehicle(){
     
     this(" "," ",0);
     }
-
+//full constructor
     public Vehicle(String model, String licensePalet, int capacity) {
         this.model = model;
         this.licensePlate = licensePalet;
@@ -43,9 +44,8 @@ public class Vehicle {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-      
+      // Calculates the fare based on distance
     public double calculateFare(double distance){
-    
     return distance * RatePerKm;
     }
 

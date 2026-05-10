@@ -1,0 +1,9 @@
+Booking ID: 5115
+Customer: Rand
+Driver: Ahmed
+Vehicle: Toyota Camry
+Payment Method: Cash
+Fare: 75.0
+Status: Booked
+
+---------------------------------------------

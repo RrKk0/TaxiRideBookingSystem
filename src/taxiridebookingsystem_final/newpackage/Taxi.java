@@ -53,11 +53,11 @@ public class Taxi extends Vehicle implements Bookable{
     public String toString() {
         return super.toString() + "Taxi{" + "color=" + color + ", year=" + year + '}';
     }
-
+//starting the taxi ride
     public void startRide() {
         System.out.println("Taxi ride started.");
     }
-    
+    //calculates the taxi ride fare based on distance.
     @Override
     public double calculateFare(double distance) {
         if (distance > 0) {
@@ -65,13 +65,18 @@ public class Taxi extends Vehicle implements Bookable{
         }
         return 0;
     }
+    
+ // This method is implemented from the Bookable interface.
+
+// It is used to confirm booking a taxi ride.
     @Override
 public void book(){
 
 System.out.println("Taxi booked");
 
 }
-
+// This method is implemented from the Bookable interface.
+// It is used to cancel a taxi ride.
 @Override
 public void cancel(){
 

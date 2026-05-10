@@ -40,16 +40,17 @@ public class SelfDrivingTaxi extends Vehicle {
             this.sensorStatus = "Inactive";
         }
     }
-
+// Returns the information of the self-driving taxi
     @Override
     public String toString() {
         return super.toString() + "SelfDrivingTaxi{" + "softwareVersion=" + softwareVersion + ", sensorStatus=" + sensorStatus + '}';
     }
-
+// Displays a message when the self-driving taxi starts driving automatically.
     public void driveAutomatically() {
         System.out.println("The self driving taxi is now driving automatically");
 
     }
+    // Calculates the fare for a self-driving taxi by adding an extra fee.
 
     @Override
     public double calculateFare(double distance) {
