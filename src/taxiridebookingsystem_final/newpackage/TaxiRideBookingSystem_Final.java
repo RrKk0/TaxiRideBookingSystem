@@ -294,7 +294,7 @@ public class TaxiRideBookingSystem_Final {
 
                     case 12:
                         System.out.println("Goodbye.");
-                        pause(input);
+                        
                         break;
 
                     default:
