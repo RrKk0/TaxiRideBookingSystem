@@ -167,6 +167,17 @@ public class Booking implements Bookable {
     public static int getBookingCount() {
         return bookingCount;
     }
+
+    @Override
+public String toString() {
+    return "Booking ID: " + bookingId
+            + "\nCustomer: " + customer.getName()
+            + "\nDriver: " + driver.getName()
+            + "\nVehicle: " + vehicle.getModel()
+            + "\nPayment Method: " + payment.getPaymentMethod()
+            + "\nFare: " + fare
+            + "\nStatus: " + status;
+}
     
 
 }
